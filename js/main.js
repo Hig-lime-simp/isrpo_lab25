@@ -247,7 +247,7 @@ function delay(ms) {
 //     .then((result) => console.log(result))
 //     .catch((error) => console.log(error))
 
-console.log("=== Async/Await ===");
+// console.log("=== Async/Await ===");
 
 // async function greet() {
 //     return "Привет!";
@@ -460,3 +460,155 @@ console.log("=== Async/Await ===");
 
 // createPost();
 
+// console.log("=== Optional Chaining ===");
+
+// const user1 = {
+//     name: "Андрей",
+//     address: {
+//         city: "Волжский",
+//         street: "Пушкина"
+//     }
+// };
+
+// const user2 = {
+//     name: "Дмитрий",
+//     // address - отсутствует
+// };
+
+// // Optional Chaining — безопасный доступ к вложенным свойствам
+// const city2 = user2.address?.city;
+// console.log("Город (новый способ):", city2); // undefined
+
+// const street = user1.address?.street;
+// console.log("Улица:", street); // "Пушкина"
+
+// console.log("=== Optional Chaining с методами ===");
+
+// const admin = {
+//     name: "Администратор",
+//     permissions: {
+//         canDelete: () => true,
+//     },
+// };
+
+// const guest = {
+//     name: "Гость",
+//     // permissions - отсутствует
+// };
+
+// // Optional Chaining для вызова метода
+// console.log("Админ может удалять?", admin.permissions?.canDelete?.()); // true
+// console.log("Гость может удалять?", guest.permissions?.canDelete?.()); // undefined
+
+// console.log("=== Optional Chaining с массивами ===");
+
+// const company = {
+//     name: "Tech Corp",
+//     employees: [
+//         { name: "Надежда", role: "Developer" },
+//         { name: "Анна", role: "Designer" }
+//     ]
+// };
+
+// const startup = {
+//     name: "New Startup",
+//     // employees - отсутствует
+// };
+
+// // Optional Chaining для безопасного доступа к элементам массива
+// console.log("Первый сотрудник:", company.employees?.[0]?.name);
+// console.log("Первый сотрудник стартапа:", startup.employees?.[0]?.name);
+
+// console.log("=== Nullish Coalescing ===");
+
+// const value1 = 0;
+// const value2 = "";
+// const value3 = false;
+// const value4 = null;
+// const value5 = undefined;
+
+// // Оператор || (логическое ИЛИ) — возвращает правое значение для любого falsy
+// console.log('value1 || "default":', value1 || "default");
+// console.log('value2 || "default":', value2 || "default");
+// console.log('value3 || "default":', value3 || "default");
+
+// console.log("---");
+
+// // Оператор ?? (Nullish Coalescing) — возвращает правое значение ТОЛЬКО для null и undefined
+// console.log('value1 ?? "default":', value1 ?? "default");
+// console.log('value2 ?? "default":', value2 ?? "default");
+// console.log('value3 ?? "default":', value3 ?? "default");
+// console.log('value4 ?? "default":', value4 ?? "default");
+// console.log('value5 ?? "default":', value5 ?? "default");
+
+// function displayUserSettings(settings) {
+//     const theme = settings?.theme ?? "light";
+//     const fontSize = settings?.fontSize ?? 14;
+//     const notifications = settings?.notifications ?? true;
+
+//     console.log("Настройки пользователя:");
+//     console.log("Тема:", theme);
+//     console.log("Размер шрифта:", fontSize);
+//     console.log("Уведомления:", notifications);
+//     console.log("---");
+// }
+
+// // Используются указанные значения
+// displayUserSettings({ theme: "dark", fontSize: 16 });
+
+// // notifications = false (не заменяется на true!)
+// displayUserSettings({ notifications: false });
+
+// // Все значения по умолчанию
+// displayUserSettings({});
+
+// console.log("=== Комбинирование ?. и ?? ===");
+
+// const apiResponse = {
+//     data: {
+//         user: {
+//             profile: {
+//                 settings: {
+//                     language: "ru",
+//                 }
+//             }
+//         }
+//     }
+// };
+
+// // Optional Chaining для безопасного доступа, Nullish Coalescing для значения по умолчанию
+// const language = apiResponse?.data?.user?.profile?.settings?.language ?? "en";
+// console.log("Язык:", language); // 'ru'
+
+// const emptyResponse = {};
+
+// const defaultLanguage = emptyResponse?.data?.user?.profile?.settings?.language ?? "en";
+// console.log("Язык по умолчанию:", defaultLanguage); // 'en'
+
+function displayOrder(Order){
+    console.log(`Тип оплаты заказа - ${Order?.customer?.shipping?.payment?.type ?? "card"}`)
+}
+
+const order1 ={
+    customer: {
+        shipping: {
+            payment: {
+                type: "cash"
+            }
+        }
+    }
+}
+
+const order2 ={
+    customer: {
+        shipping: {
+            payment: {
+                type: undefined
+            }
+        }
+    }
+}
+
+displayOrder(order1)
+console.log();
+displayOrder(order2)
