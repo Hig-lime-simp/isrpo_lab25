@@ -328,50 +328,135 @@ console.log("=== Async/Await ===");
 
 // cookDinnerFast().then((result) => console.log(result));
 
-async function processOrder() {
-    try{
-        const res1 = await Check(false)
+// async function processOrder() {
+//     try{
+//         const res1 = await Check(false)
 
-        console.log(res1);
+//         console.log(res1);
 
-        const res2 = await Calc()
+//         const res2 = await Calc()
 
-        console.log(res2);
+//         console.log(res2);
 
-        const res3 = await StatusOrder()
-        console.log(res3);
-    }
-    catch (error) {
-        console.log(error)
-    }
-}
-async function Check(flag) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-        if (flag) {
-            resolve("Товар в наличии")
-        }
-        else{
-            reject("Товар отсутсвует")
-        }
-        },1000)
-    })
-}
+//         const res3 = await StatusOrder()
+//         console.log(res3);
+//     }
+//     catch (error) {
+//         console.log(error)
+//     }
+// }
+// async function Check(flag) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//         if (flag) {
+//             resolve("Товар в наличии")
+//         }
+//         else{
+//             reject("Товар отсутсвует")
+//         }
+//         },1000)
+//     })
+// }
 
-async function Calc() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve("Считаем цену");
-        }, 800)
-    })
-}
+// async function Calc() {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve("Считаем цену");
+//         }, 800)
+//     })
+// }
 
-async function StatusOrder(params) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve("Потверждаем заказ")
-        }, 600)
-    })
-}
+// async function StatusOrder(params) {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve("Потверждаем заказ")
+//         }, 600)
+//     })
+// }
 
-processOrder()
+// processOrder()
+
+// async function getUsers() {
+//     try {
+//         // Отправляем GET-запрос к API
+//         const response = await fetch("https://jsonplaceholder.typicode.com/users");
+        
+//         // Проверяем успешность запроса
+//         if (!response.ok) {
+//             throw new Error(`HTTP ошибка! Статус: ${response.status}`);
+//         }
+        
+//         // Преобразуем ответ в JSON
+//         const users = await response.json();
+        
+//         // Выводим первых 3 пользователей
+//         console.log("Первые 3 пользователя:");
+//         users.slice(3, 10).forEach((user) => {
+//             console.log(`- ${user.name} (${user.email})`);
+//         });
+//     } catch (error) {
+//         console.log("Ошибка при загрузке пользователей:", error.message);
+//     }
+// }
+
+// getUsers();
+
+// async function getUserById(id) {
+//     try {
+//         // Используем шаблонную строку для подстановки ID в URL
+//         const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+        
+//         // Проверяем, найден ли пользователь
+//         if (!response.ok) {
+//             throw new Error(`Пользователь с ID ${id} не найден`);
+//         }
+        
+//         const user = await response.json();
+        
+//         // Выводим информацию о пользователе
+//         console.log(`Пользователь #${id}`);
+//         console.log(`Имя: ${user.name}`);
+//         console.log(`Город: ${user.address.city}`);
+//         console.log(`Компания: ${user.company.name}`);
+//     } catch (error) {
+//         console.log("Ошибка:", error.message);
+//     }
+// }
+
+// getUserById(1);
+
+// async function createPost() {
+//     try {
+//         // Создаём объект с данными новой записи
+//         const newPost = {
+//             title: "Моя первая запись",
+//             body: "Это содержание моей первой записи в блоге",
+//             userId: 1,
+//         };
+        
+//         // Отправляем POST-запрос с настройками
+//         const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+//             method: "POST",        // Метод HTTP-запроса
+//             headers: {
+//                 "Content-Type": "application/json", // Указываем тип данных
+//             },
+//             body: JSON.stringify(newPost), // Преобразуем объект в JSON-строку
+//         });
+        
+//         // Проверяем успешность запроса
+//         if (!response.ok) {
+//             throw new Error(`HTTP ошибка! Статус: ${response.status}`);
+//         }
+        
+//         // Получаем ответ сервера
+//         const createdPost = await response.json();
+//         console.log("Создана новая запись:");
+//         console.log("ID:", createdPost.id);
+//         console.log("Заголовок:", createdPost.title);
+//     } catch (error) {
+//         console.log("Ошибка при создании записи:", error.message);
+//     }
+// }
+
+// createPost();
+
