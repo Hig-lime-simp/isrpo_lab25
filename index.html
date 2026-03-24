@@ -8,8 +8,18 @@
 </head>
 <body>
     <div class="container">
-        <h1>lab24-26 - Modern JavaScript</h1>
-        <h2>Современный JavaScript</h2>
+        <h1>Конвертер Валют</h1>
+    </div>
+    <div class="container">
+        <div class="MoneyPlace">
+            <input type="text" placeholder="0" id="MoneyInput" class="input">
+            <select id="Fiat" class="fiatList">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="RUB">RUB</option>
+            </select>
+        </div>
+        <button id="Convert" class="ConvertBtn">Конвертировать</button>
     </div>
     <script type="module" src="js/api.js"></script>
 </body>
